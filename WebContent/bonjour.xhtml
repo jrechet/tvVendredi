@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Premier JSF 2.0</title>
+</h:head>
+<h:body>
+	<h1>Premier JSF 2.0 - bonjour.xhtml</h1>
+	<h:form>
+		<h:outputLabel for="nom" value="Renseigner le nom: " title="Nom" />
+		<h:inputText id="nom" value="#{bonjour.nom}" title="Nom"
+			required="true" requiredMessage=" Nom is required" binding="#{nom}">
+		</h:inputText>
+		<h:message for="nom" style="color:red" />
+		<p></p>
+		
+		<h:outputLabel for="prenom" value="Renseigner le prenom: "
+			title="Prenom" />
+		<h:inputText id="prenom" value="#{bonjour.prenom}" title="Prenom"
+			required="true" requiredMessage=" Prenom is required">
+			<f:validator validatorId="BonjourValidator" />
+			<f:attribute name="nomAttribute" value="#{nom}" />
+		</h:inputText>
+		<h:message for="prenom" style="color:red" />
+		<p></p>
+
+		<h:commandButton value="SUBMIT" action="bienvenue" />
+	</h:form>
+</h:body>
+</html>
