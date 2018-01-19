@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Connexion</title>
+</h:head>
+<h:body>
+	<h1>Connexion</h1>
+	<h:form>
+		<h:outputLabel for="mail" value="Renseigner l'adresse mail: " title="Mail" />
+		<h:inputText id="mail" value="#{connexion.mail}" title="Mail"
+			required="true" requiredMessage=" Mail is required"> <!-- binding="#{mail}" -->
+		</h:inputText>
+		<h:message for="mail" style="color:red" />
+		<p></p>
+		
+		<h:outputLabel for="pwd" value="Renseigner le password: "
+			title="Prenom" />
+		<h:inputText id="password" value="#{connexion.password}" title="Password"
+			required="true" requiredMessage=" Pqssword is required">
+<!-- 		<f:validator validatorId="ConnexionValidator" />
+			<f:attribute name="mailAttribute" value="#{mail}" /> -->
+		</h:inputText>
+		<h:message for="password" style="color:red" />
+		<p></p>
+
+		<h:commandButton value="SUBMIT" action="display" />
+	</h:form>
+</h:body>
+</html>
