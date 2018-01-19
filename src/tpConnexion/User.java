@@ -6,10 +6,15 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 //import javax.persistence.*;
 
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 @ManagedBean
 @RequestScoped
-//@Entity
-//@Table
+@Entity
+@Table
 public class User {
 
 //

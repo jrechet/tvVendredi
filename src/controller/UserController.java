@@ -1,4 +1,4 @@
-package tpConnexion.Controller;
+package controller;
 
 import java.io.Serializable;
 
