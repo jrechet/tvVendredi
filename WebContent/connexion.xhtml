@@ -8,24 +8,31 @@
 <h:body>
 	<h1>Connexion</h1>
 	<h:form>
-		<h:outputLabel for="mail" value="Renseigner l'adresse mail: " title="Mail" />
-		<h:inputText id="mail" value="#{connexion.mail}" title="Mail"
-			required="true" requiredMessage=" Mail is required"> <!-- binding="#{mail}" -->
-		</h:inputText>
-		<h:message for="mail" style="color:red" />
-		<p></p>
-		
-		<h:outputLabel for="pwd" value="Renseigner le password: "
-			title="Prenom" />
-		<h:inputText id="password" value="#{connexion.password}" title="Password"
-			required="true" requiredMessage=" Pqssword is required">
-<!-- 		<f:validator validatorId="ConnexionValidator" />
-			<f:attribute name="mailAttribute" value="#{mail}" /> -->
-		</h:inputText>
-		<h:message for="password" style="color:red" />
-		<p></p>
+		<fieldset>
+			<legend>Inscription</legend>
+			
+			<h:outputLabel for="mail" value="Renseignez l'adresse mail: "
+				title="Mail" />
+			<h:inputText id="mail" value="#{userController.user.mail}" title="Mail"
+				required="true" requiredMessage=" Mail is required">
+				<!-- binding="#{mail}" -->
+			</h:inputText>
+			<h:message for="mail" style="color:red" />
+			<p></p>
 
-		<h:commandButton value="SUBMIT" action="display" />
+			<h:outputLabel for="password" value="Renseignez le password: "
+				title="Password" />
+			<h:inputSecret id="password" value="#{userController.user.password}"
+				title="Password" required="true"
+				requiredMessage=" Password is required">
+				<!--<f:validator validatorId="ConnexionValidator" />
+				<f:attribute name="mailAttribute" value="#{mail}" /> -->
+			</h:inputSecret>
+			<h:message for="password" style="color:red" />
+			<p></p>
+
+			<h:commandButton value="SUBMIT" action="#{userController.display()}" />
+		</fieldset>
 	</h:form>
 </h:body>
 </html>
