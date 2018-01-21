@@ -1,23 +1,23 @@
 package dao;
+import tpConnexion.User;
 
-//import javax.ejb.Stateless;
-//import javax.persistence.EntityManager;
-//import javax.persistence.PersistenceContext;
-//
-//import tpConnexion.User;
-//
-//@Stateless
-//public class UserDao {
-//
-//    @PersistenceContext(unitName = "persistence-unit")
-//    private EntityManager em;
-//
-//    public void add(User user) {
-//        System.out.println("em: " + em);
-//        em.persist(user);
-//    }
-//
-//}
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+
+@Stateless
+public class UserDao {
+
+    @PersistenceContext(unitName = "src-persistence-unit")
+    private EntityManager em;
+
+    public void add(User user) {
+        System.out.println("em: " + em);
+        em.persist(user);
+    }
+
+}
 
 //Stateless object is an instance of a class without instance fields (instance variables). 
 //The class may have fields, but they are compile-time constants (static final).
