@@ -8,7 +8,7 @@
 </h:head>
 
 <h:body>
-	<h1>Connexion</h1>
+	<h1>Inscription</h1>
 	<h:form>
 		<fieldset>
 			<legend>Inscription</legend>
@@ -17,7 +17,6 @@
 				title="Nom" />
 			<h:inputText id="nom" value="#{userController.user.nom}" title="Nom"
 				required="true" requiredMessage="Nom is required" binding="#{varNom}">
-				binding="#{mail}"
 			</h:inputText>
 			<h:message for="nom" style="color:red" />
 			<p></p>
@@ -27,7 +26,6 @@
 			<h:inputText id="prenom" value="#{userController.user.prenom}" title="Prenom"
 				required="true" requiredMessage=" Prenom is required">
 			<!-- <f:attribute name="attributeNom" value="#{varNom}"/>-->				
-			binding="#{mail}"
 			</h:inputText>
 			<h:message for="prenom" style="color:red" />
 			<p></p>
@@ -50,7 +48,7 @@
 			<h:message for="password" style="color:red" />
 			<p></p>
 
-			<h:commandButton value="SUBMIT" action="#{userController.display()}" />
+			<h:commandButton value="Inscription" style="color:blue" action="#{userController.display()}"/>
 		</fieldset>
 	</h:form>
 </h:body>
