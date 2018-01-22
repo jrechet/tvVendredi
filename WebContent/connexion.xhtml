@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	  xmlns:h="http://java.sun.com/jsf/html">
+<!-- 	  xmlns:f="http://java.sun.com/jsf/core">-->
 <h:head>
 	<title>Connexion</title>
 </h:head>
@@ -14,8 +14,7 @@
 			<h:outputLabel for="mail" value="Renseignez l'adresse mail: "
 				title="Mail" />
 			<h:inputText id="mail" value="#{userController.user.mail}" title="Mail"
-				required="true" requiredMessage=" Mail is required">
-				<!-- binding="#{mail}" -->
+				required="true" requiredMessage=" Mail is required" binding="#{varMail}">
 			</h:inputText>
 			<h:message for="mail" style="color:red" />
 			<p></p>

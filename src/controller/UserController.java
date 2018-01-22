@@ -1,9 +1,10 @@
 package controller;
 
-import java.io.Serializable;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import java.io.Serializable;
 
 import tpConnexion.User;
 
@@ -14,30 +15,26 @@ public class UserController implements Serializable {
 
 	private User user;
 
+	@EJB
+	private UserDao userDao;
+	
 	public UserController() {
 		user = new User();
 	}
 
 	public void add() {
 		System.out.println(user.getmail());
+		userDao.add(user);
 	}
-
-	// @EJB
-	// private
-	//
-	// public void add() {
-	// userDao.add(user);
-	//
-	// }
 
 	public String display() {
 		System.out.println("User connection");
-		System.out.println(user.getmail());
+		System.out.println(user.getMail());
 		System.out.println(user.getPassword());
 		return "display";
 	}
 
-	// --Getter - Setter --
+	// --Getters - Setters --
 	public User getUser() {
 		return user;
 	}
@@ -45,4 +42,13 @@ public class UserController implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	public User getUserDao() {
+		return userDao;
+	}
+
+	public void setUserDao(UserDao userDao) {
+		this.user = user;
+	}
+	
 }

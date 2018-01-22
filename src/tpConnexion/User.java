@@ -1,6 +1,5 @@
 
 package tpConnexion;
-import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -17,13 +16,13 @@ import javax.persistence.Table;
 @Table
 public class User {
 
-//
+	@Id
     private Long id;
-
-  //  @Column
+	
+	@Column
     private String mail;
 
-  //  @Column
+   @Column
     private String password;
 
     public User() {
@@ -32,7 +31,6 @@ public class User {
     public String getmail() {
         return mail;
     }
-
     public void setEmail(String name) {
         this.mail = name;
     }
@@ -40,7 +38,6 @@ public class User {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String surname) {
         this.password = surname;
     }
@@ -48,7 +45,6 @@ public class User {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
