@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html">
-<!-- 	  xmlns:f="http://java.sun.com/jsf/core">-->
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      
 <h:head>
 	<title>Connexion</title>
 </h:head>
+
 <h:body>
 	<h1>Connexion</h1>
 	<h:form>
 		<fieldset>
 			<legend>Inscription</legend>
 			
+    		<h:outputLabel for="nom" value="Renseignez le nom : "
+				title="Nom" />
+			<h:inputText id="nom" value="#{userController.user.nom}" title="Nom"
+				required="true" requiredMessage="Nom is required" binding="#{varNom}">
+				binding="#{mail}"
+			</h:inputText>
+			<h:message for="nom" style="color:red" />
+			<p></p>
+			
+			<h:outputLabel for="prenom" value="Renseignez le prenom : "
+				title="Prenom" />
+			<h:inputText id="prenom" value="#{userController.user.prenom}" title="Prenom"
+				required="true" requiredMessage=" Prenom is required">
+			<!-- <f:attribute name="attributeNom" value="#{varNom}"/>-->				
+			binding="#{mail}"
+			</h:inputText>
+			<h:message for="prenom" style="color:red" />
+			<p></p>
 			<h:outputLabel for="mail" value="Renseignez l'adresse mail: "
 				title="Mail" />
 			<h:inputText id="mail" value="#{userController.user.mail}" title="Mail"
