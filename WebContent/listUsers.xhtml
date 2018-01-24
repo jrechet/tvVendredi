@@ -14,18 +14,22 @@
 			<legend>Liste des Users</legend>
 			<h:dataTable value="#{userController.list()}" var="user">
 			<h:column>
-			<h:outputLabel value="User #{user.id}" />
+			<h:outputLabel value="# #{user.id}" />
 			</h:column>
 			<h:column>
+			<f:facet name="header">Nom</f:facet> 
 				: #{user.nom}
 			</h:column>
 			<h:column>
+			<f:facet name="header">Prenom</f:facet> 
 				#{user.prenom}
 			</h:column>	
 			<h:column>
+			<f:facet name="header">Mail</f:facet>
 				#{user.mail}
 			</h:column>
 			<h:column>
+			<f:facet name="header">Password</f:facet>
 				#{user.password}
 			</h:column>
 			

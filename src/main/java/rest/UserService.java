@@ -50,4 +50,12 @@ public class UserService {
 	public void delete(@PathParam("id") Long userId) {
 		userDao.delete(userId);
 	}
+	
+	//AddTrackToUser
+	@Path("addTrack/{user.id}/{track.id}")
+	public User addTrackToUser(@PathParam("user.id") Long userId, @PathParam("track.id") Long trackId) {
+		//userDao.add(trackId);
+		
+		return null;
+	}
 }

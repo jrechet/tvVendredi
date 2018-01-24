@@ -19,14 +19,23 @@ public class User {
 	@Column
 	private String mail;
 	@Column
-	private String password;
-	@Column
 	private String nom;
 	@Column
 	private String prenom;
 
 	@OneToMany(mappedBy="user")
 	private List<Track> trackList;
+	
+	@Column
+	private String password;
+	public List<Track> getTrackList() {
+		return trackList;
+	}
+
+	public void setTrackList(List<Track> trackList) {
+		this.trackList = trackList;
+	}
+	
 	
 	public User() {
 	}
