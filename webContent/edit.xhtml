@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html">
+	        
+<h:head>
+	<title>Edition</title>
+</h:head>
+
+<h:body>
+	<h1>Edition</h1>
+	<h:form>
+		<fieldset>
+			<legend>Modifications de #{user.nom} #{user.prenom}</legend>
+				
+				<h:outputLabel for="mail" value="Modifiez le mail : " title="Mail" />
+				<h:inputText id="mail" value="#{userController.user.mail}" title="Mail"
+					 binding="#{varMail}">
+				</h:inputText>
+				<p></p>
+				
+				<h:outputLabel for="password" value="Modifiez le password : " title="Password" />
+				<h:inputText id="password" value="#{userController.user.password}" title="Password"
+					 binding="#{varPassword}">
+				</h:inputText>
+				<h:inputHidden id="nom" value="#{userController.user.nom}"></h:inputHidden>
+				<h:inputHidden id="prenom" value="#{userController.user.prenom}"></h:inputHidden>
+				<h:inputHidden id="id" value="#{userController.user.id}"></h:inputHidden>
+				<p></p>
+				
+			<h:commandButton value="update" style="color:green" action="#{userController.update()}"/>
+		</fieldset>
+	</h:form> 
+</h:body>
+</html>

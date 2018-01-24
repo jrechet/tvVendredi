@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html">
+	        
+<h:head>
+	<title>ListUsers</title>
+</h:head>
+
+<h:body>
+	<h1>Liste des Users</h1>
+	<h:form>
+		<fieldset>
+			<legend>Liste des Users</legend>
+			<h:dataTable value="#{userController.list()}" var="user">
+			<h:column>
+			<h:outputLabel value="User #{user.id}" />
+			</h:column>
+			<h:column>
+				: #{user.nom}
+			</h:column>
+			<h:column>
+				#{user.prenom}
+			</h:column>	
+			<h:column>
+				#{user.mail}
+			</h:column>
+			<h:column>
+				#{user.password}
+			</h:column>		
+ 			<h:column>
+				<h:commandButton value="delete" style="color:blue" action="#{userController.delete(user.id)}"/>
+			</h:column>
+			<h:column>
+				<h:commandButton value="update" style="color:green" action="#{userController.displayUpdateView(user.id)}"/>
+			</h:column>
+			</h:dataTable>
+		</fieldset>
+	</h:form> 
+</h:body>
+</html>
+
+
