@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      
+<h:head>
+	<title>Tracks</title>
+</h:head>
+
+<h:body>
+	<h1>Tracks</h1>
+	<h:form>
+		<fieldset>
+			<legend>New Tracks</legend>
+			
+    		<h:outputLabel for="title" value="Title : "
+				title="Title" />
+			<h:inputText id="title" value="#{trackController.track.title}" title="Title"
+				required="true" requiredMessage="Title is required">
+			</h:inputText>
+			<h:message for="title" style="color:red" />
+			<p></p>
+			
+			<h:outputLabel for="artist" value="Artist : "
+				title="Artist" />
+			<h:inputText id="artist" value="#{trackController.track.artist}" title="Artist"
+				required="true" requiredMessage=" Artist is required">			
+			</h:inputText>
+			<h:message for="artist" style="color:red" />
+			<p></p>
+
+			<h:commandButton value="Submit" style="color:blue" action="#{trackController.add()}"/>
+		</fieldset>
+	</h:form>
+</h:body>
+</html>

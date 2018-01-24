@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	        
+<h:head>
+	<title>TrackList</title>
+</h:head>
+
+<h:body>
+	<h1>Tracks List</h1>
+	<h:form>
+		<fieldset>
+			<legend>Tracks List</legend>
+			<h:dataTable value="#{trackController.list()}" var="track">
+			<h:column>
+			<h:outputLabel value="Track #{track.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">TITLE</f:facet> 
+				: #{track.title}
+			</h:column>
+			<h:column>
+				<f:facet name="header">ARTIST</f:facet> 
+				#{track.artist}
+			</h:column>		
+ 			<h:column>
+				<h:commandButton value="delete" style="color:blue" action="#{trackController.delete(track.id)}"/>
+			</h:column>
+ 			<h:column>
+				<h:commandButton value="update" style="color:green" action="#{trackController.displayUpdateView(track.id)}"/>
+			</h:column>
+			</h:dataTable>
+		</fieldset>
+	</h:form> 
+</h:body>
+</html>

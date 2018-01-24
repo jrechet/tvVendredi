@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:h="http://java.sun.com/jsf/html">
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
 	        
 <h:head>
 	<title>ListUsers</title>
@@ -26,8 +27,20 @@
 			</h:column>
 			<h:column>
 				#{user.password}
-			</h:column>		
- 			<h:column>
+			</h:column>
+			
+<!-- 			<h:dataTable value="#{user.trackList}" var="track">
+	    		<h:column>
+		        	<h:link value="#{track.title}" outcome="track">
+		            	<f:param name="id" value="#{track.id}" />
+		        	</h:link>
+	    		</h:column>
+			</h:dataTable> -->
+				<!-- 
+		<h:column>
+				#{user.trackList}
+			</h:column>	 -->
+				<h:column>
 				<h:commandButton value="delete" style="color:blue" action="#{userController.delete(user.id)}"/>
 			</h:column>
 			<h:column>
@@ -38,5 +51,4 @@
 	</h:form> 
 </h:body>
 </html>
-
 

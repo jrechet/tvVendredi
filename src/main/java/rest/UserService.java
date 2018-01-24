@@ -20,7 +20,7 @@ public class UserService {
 	@EJB
 	private UserDao userDao;
 
-	@Path("/display")
+	@Path("{id}")
 	@GET
 	@Produces("application/json")
 	public User display(@QueryParam("id") Long id) {

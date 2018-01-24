@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html">
+	        
+<h:head>
+	<title>TrackEdit</title>
+</h:head>
+
+<h:body>
+	<h1>Track Edit</h1>
+	<h:form>
+		<fieldset>
+			<legend>Editions of #{track.title}</legend>
+				
+				<h:outputLabel for="title" value="Title's edition : " title="title" />
+				<h:inputText id="title" value="#{trackController.track.title}" title="title"
+					 binding="#{vartitle}">
+				</h:inputText>
+				<p></p>
+				
+				<h:outputLabel for="artist" value="Artist's edition : " title="artist" />
+				<h:inputText id="artist" value="#{trackController.track.artist}" title="artist"
+					 binding="#{varartist}">
+				</h:inputText>
+				<h:inputHidden id="id" value="#{trackController.track.id}"></h:inputHidden>
+				<p></p>
+				
+			<h:commandButton value="update" style="color:green" action="#{trackController.update()}"/>
+		</fieldset>
+	</h:form> 
+</h:body>
+</html>
