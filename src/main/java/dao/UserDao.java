@@ -1,8 +1,10 @@
 package dao;
+import tpConnexion.Track;
 import tpConnexion.User;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,6 +14,9 @@ public class UserDao {
 
     @PersistenceContext(unitName = "pu-h2") // même nom que ds persistence.xml
     private EntityManager em;
+    
+    @EJB
+    TrackDao trackDao;
 
     public List<User> list(){
     	return em.createQuery("select e from User e").getResultList();
@@ -39,6 +44,15 @@ public class UserDao {
 
     public User get(Long userId) {
         return em.find(User.class, userId);
+    }
+    
+    public void addTTU(Long userId, Long trackId) {
+        User user = get(userId);
+        	System.out.println("User : " + userId);
+        Track track = trackDao.get(trackId);
+        	System.out.println("Track :" + trackId);
+        user.getTracks().add(track);
+        em.persist(user);
     }
 }
 
