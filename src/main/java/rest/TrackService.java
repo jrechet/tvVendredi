@@ -8,7 +8,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
@@ -23,15 +22,16 @@ public class TrackService {
 	private TrackDao trackDao;
 	
 	@GET	// Méthode GET
-	@Path("/")
+	@Path("/{id}")
 	@Produces("application/json")
-	public Track display(@QueryParam("id") Long id) {
+	public Track display(@PathParam("id") Long id) {
 		return trackDao.get(id);
 	}
 	
 	//ADD
 	@POST	// Méthode POST
 	@Path("{title}/{artist}")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public void add(@PathParam("title") String title, @PathParam("artist") String artist, @Context UriInfo uriInfo) {
 	    Track track = new Track();
 	    track.setTitle(title);

@@ -27,11 +27,15 @@ public class UserService {
 
 	@Path("{id}")
 	@GET
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Produces({ MediaType.APPLICATION_XML })
+//	public User display(@PathParam("id") Long UserId) {
+//		 System.out.println("the user to show " + UserId);
+//		return userDao.get(UserId);
+//	}
 	public User display(@PathParam("id") Long UserId) {
+		 System.out.println("the user to show " + UserId);
 		return userDao.get(UserId);
 	}
-
 	//ADD
 	@POST
 	@Path("add/{nom}/{prenom}/{mail}/{password}")
@@ -70,6 +74,8 @@ public class UserService {
 	@POST
 	@Path("addTTU/{userId}/{trackId}")
 	public void addTTU(@PathParam("userId") Long userId, @PathParam("trackId") Long trackId) {
+		System.out.println("adding track " + trackId + " to user " + userId);
 		userDao.addTTU(userId, trackId);
 	    }
 }
+

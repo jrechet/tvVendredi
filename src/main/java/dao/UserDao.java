@@ -51,7 +51,7 @@ public class UserDao {
         	System.out.println("User : " + userId);
         Track track = trackDao.get(trackId);
         	System.out.println("Track :" + trackId);
-        user.getTracks().add(track);
+        user.getTrackList().add(track);
         em.persist(user);
     }
 }

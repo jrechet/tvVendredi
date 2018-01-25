@@ -1,6 +1,7 @@
 package tpConnexion;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +30,7 @@ public class User {
 	@Column
 	private String password;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Track> trackList;
 
 	public User() {
@@ -69,11 +70,6 @@ public class User {
 	}
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
-	}
-
-	public List<Track> getTracks() {
-		ArrayList<Track> trackList = null;
-		return trackList == null ? new ArrayList<>() : trackList;
 	}
 
 	public void setTracks(List<Track> trackList) {
