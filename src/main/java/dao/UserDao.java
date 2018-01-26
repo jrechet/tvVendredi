@@ -33,16 +33,21 @@ public class UserDao {
     	User userToDelete = em.find(User.class, userId);
     	em.remove(userToDelete);
     } 
-    //public void deleteEntity(User userToDelete){
-    // em.remove(user);
     
     //UPDATE
-    public void update(User user) {
-        user = em.merge(user);
+    public void update(Long userId, User user) {
+    	System.out.println("DAO - Updating of user:" + userId);
+    	User userToEdit = em.find(User.class, userId);
+    	userToEdit.setNom(user.getNom());
+    	userToEdit.setPrenom(user.getPrenom());
+    	userToEdit.setMail(user.getMail());
+    	userToEdit.setPassword(user.getPassword());
+    	em.merge(userToEdit);
         //em.flush();
     }
 
     public User get(Long userId) {
+    	
         return em.find(User.class, userId);
     }
     
@@ -52,6 +57,14 @@ public class UserDao {
         Track track = trackDao.get(trackId);
         	System.out.println("Track :" + trackId);
         user.getTrackList().add(track);
+        em.persist(user);
+    }
+    
+    public void deleteTrackFromUser(Long userId, Long trackId) {
+        User user = get(userId);
+        Track track = trackDao.get(trackId);
+        System.out.println("User:" + userId + ", Track: " + trackId);
+        user.getTrackList().remove(track);
         em.persist(user);
     }
 }

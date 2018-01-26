@@ -1,6 +1,7 @@
 package tpConnexion;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ public class Track {
 	@Column
 	private String artist;
 	
-	@ManyToOne				// Apparié avec OneToMany ds User.java
+	@ManyToOne(fetch = FetchType.EAGER)				// Apparié avec OneToMany ds User.java
 	private User user; 
 
 	public Track() {

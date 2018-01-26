@@ -1,5 +1,7 @@
 package rest;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -59,5 +61,11 @@ public class TrackService {
 		track.setArtist(artist);
 		
 		trackDao.update(track);
+	}
+	
+	@GET
+	public List<Track> TrackList(){
+		return trackDao.list();
+		
 	}
 }

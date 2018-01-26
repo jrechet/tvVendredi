@@ -1,5 +1,8 @@
 package rest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -15,6 +18,7 @@ import javax.ws.rs.core.UriInfo;
 
 import dao.TrackDao;
 import dao.UserDao;
+import tpConnexion.Track;
 import tpConnexion.User;
 
 @Path("user")
@@ -24,18 +28,41 @@ public class UserService {
 	private UserDao userDao;
 	@EJB
 	private TrackDao trackDao;
+	
+	private User user;
 
 	@Path("{id}")
 	@GET
-	@Produces({ MediaType.APPLICATION_XML })
+	@Produces({ MediaType.APPLICATION_JSON })
 //	public User display(@PathParam("id") Long UserId) {
 //		 System.out.println("the user to show " + UserId);
 //		return userDao.get(UserId);
 //	}
+	
 	public User display(@PathParam("id") Long UserId) {
-		 System.out.println("the user to show " + UserId);
-		return userDao.get(UserId);
-	}
+//	System.out.println("the user to show " + UserId);
+	User userToDisplay = userDao.get(UserId);	
+	System.out.println("the userToDisplay" + UserId);
+	userToDisplay.getNom();
+	userToDisplay.getPrenom();
+	userToDisplay.getMail();
+	userToDisplay.getPassword();
+
+        List<Track> tracks = new ArrayList<>();
+        for(Track trackList : userToDisplay.getTrackList()) {
+        	System.out.println("userToDisplayFor" + trackList);
+        	Track track = null;
+            Track trackUserToDisplay = new Track();
+            trackUserToDisplay.setId(track.getId());
+            trackUserToDisplay.setTitle(track.getTitle());
+            trackUserToDisplay.setArtist(track.getArtist());
+            tracks.add(trackUserToDisplay);
+        }
+        userToDisplay.setTrackList(tracks);
+     	System.out.println("userToDisplayEnd" + tracks);
+       return userToDisplay;
+    }
+	
 	//ADD
 	@POST
 	@Path("add/{nom}/{prenom}/{mail}/{password}")
@@ -56,10 +83,17 @@ public class UserService {
 
 	//EDIT
 	@PUT
-	@Path("edit")
+	@Path("edit/{id}/{nom}/{prenom}/{mail}/{password}")   //Veiller à appeler les params de façon identique!! genre pas {id} appelé par userId
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public void update(User user) {
-		userDao.update(user);
+	public void update(@PathParam("id") Long userId, @PathParam("nom") String nom, @PathParam("prenom") String prenom, @PathParam("mail") String mail, @PathParam("password") String password) {
+		System.out.println("Service - Updating of user:" + userId);
+		User user = new User();
+		user.setNom(nom);
+		user.setPrenom(prenom);
+		user.setMail(mail);
+		user.setPassword(password);
+		
+		userDao.update(userId, user);
 	}
 
 	//DELETE

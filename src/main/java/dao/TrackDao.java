@@ -34,6 +34,7 @@ public class TrackDao {
     //UPDATE
     public void update(Track track) {
         track = em.merge(track);
+        System.out.println("Updated trackId: " + track.getId());
         //em.flush();
     }
 

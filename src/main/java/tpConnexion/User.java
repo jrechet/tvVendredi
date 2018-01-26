@@ -73,6 +73,9 @@ public class User {
 	}
 
 	public void setTracks(List<Track> trackList) {
+        if (trackList == null) {
+            setTracks(new ArrayList<Track>());
+        }
 		this.trackList = trackList;
 	}
 

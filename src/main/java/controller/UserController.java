@@ -19,6 +19,7 @@ public class UserController implements Serializable {
 
 	@EJB
 	private UserDao userDao;
+
 	
 	public UserController() {
 		user = new User();
@@ -41,9 +42,9 @@ public class UserController implements Serializable {
 	}
 	
 	//UPDATE
-	public String update() {
-        System.out.println("update user : " + user.getId());
-		userDao.update(this.user);
+	public String update(Long userId) {
+        System.out.println("Controller - Updating of user : " + user.getId());
+		userDao.update(userId, user);
 		return "listUsers";
 	}
 	
